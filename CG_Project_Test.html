@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js app</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script src="js/three.js"></script>
+
+    <script id="vertexShader1" type="x-shader/x-vertex">
+      // handle shaders
+      // projectionMatrix, modelViewMatrix, position -> passed in from Three.js
+      varying vec2 vertexUV;
+      void main()	{
+        vertexUV = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+
+      }
+    </script>
+
+    <script id="fragmentShader1" type="x-shader/x-fragment">
+      varying vec2 vertexUV;
+      uniform sampler2D globeTexture;
+      void main()	{
+          gl_FragColor = texture2D(globeTexture,vertexUV);
+      }
+    </script>
+
+    <script id="vertexShader2" type="x-shader/x-vertex">
+      // body shaders
+      // projectionMatrix, modelViewMatrix, position -> passed in from Three.js
+      varying vec2 vertexUV;
+      void main()	{
+        vertexUV = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+
+      }
+    </script>
+
+    <script id="fragmentShader2" type="x-shader/x-fragment">
+      varying vec2 vertexUV;
+      uniform sampler2D globeTexture;
+      void main()	{
+          gl_FragColor = texture2D(globeTexture,vertexUV);
+      }
+    </script>
+    <script src="js/House&Cottage.js"></script>
+  </body>
+</html>
